@@ -18,7 +18,13 @@ app.post('/roommate', (req, res, next)=>{
       // console.log(data);
       // 1. Almacenar el roommate en un archivo
       //TODO:
-      roommates.push(data);
+      const roommate = {
+        nombre: data.results[0].name.first + ' ' + data.results[0].name.last,
+        debe: 0,
+        recibe: 0,
+      }
+      roommates.push(roommate);
+      console.log('roommates', roommates)
 
       // 2. retornar el roommate
       res.send(data);
