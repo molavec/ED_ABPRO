@@ -162,12 +162,37 @@ Articulos de limpieza</textarea
       };
 
       const imprimir = async () => {
+        console.log('imprimir EXECUTE');
         try {
+
+          console.log('antes del await');
           await getRoommates();
+          console.log('despues del await');
+          console.log('roommates', roommates);
+          
+          
+          
+          // Parse roommates table
+          let roommateTableHTML = ''
+          roommates.forEach((roommate)=> {
+            roommateTableHTML += `
+            <tr>
+              <td>${roommate.nombre}</td>
+              <td>${roommate.debe}</td>  
+              <td>${roommate.recibe}</td>
+              </tr>
+              ` 
+            });
+            
+          console.log('roommateTableHTML', roommateTableHTML);
+          
+          $("#roommates").html(roommateTableHTML);
+
+
           await getGastos();
-          $("#roommates").html("");
           $("#roommatesSelect").html("");
           $("#roommatesSelectModal").html("");
+
           roommates.forEach((r) => {
             $("#roommatesSelect").append(`
           <option value="${r.nombre}">${r.nombre}</option>
