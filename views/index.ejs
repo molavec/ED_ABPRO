@@ -164,15 +164,9 @@ Articulos de limpieza</textarea
       const imprimir = async () => {
         console.log('imprimir EXECUTE');
         try {
-
-          console.log('antes del await');
           await getRoommates();
-          console.log('despues del await');
-          console.log('roommates', roommates);
           
-          
-          
-          // Parse roommates table
+          // complete roommates table
           let roommateTableHTML = ''
           roommates.forEach((roommate)=> {
             roommateTableHTML += `
@@ -183,14 +177,20 @@ Articulos de limpieza</textarea
               </tr>
               ` 
             });
-            
-          console.log('roommateTableHTML', roommateTableHTML);
-          
+          // console.log('roommateTableHTML', roommateTableHTML);
           $("#roommates").html(roommateTableHTML);
 
+          // complete roommates select
+          let roommateOptionsHTML = ''
+          roommates.forEach((roommate)=> {
+            roommateOptionsHTML += `
+              <option value="${roommate.nombre}">${roommate.nombre}</option>
+              ` 
+            });
+          // console.log('roommateOptionsHTML', roommateOptionsHTML);
+          $("#roommatesSelect").html(roommateOptionsHTML);
 
           await getGastos();
-          $("#roommatesSelect").html("");
           $("#roommatesSelectModal").html("");
 
           roommates.forEach((r) => {

@@ -1,0 +1,68 @@
+[
+  {
+    "results": [
+      {
+        "gender": "male",
+        "name": {
+          "title": "Monsieur",
+          "first": "Luís",
+          "last": "Chevalier"
+        },
+        "location": {
+          "street": {
+            "number": 5149,
+            "name": "Avenue Jean-Jaurès"
+          },
+          "city": "Tecknau",
+          "state": "Graubünden",
+          "country": "Switzerland",
+          "postcode": 2118,
+          "coordinates": {
+            "latitude": "-63.1636",
+            "longitude": "-73.8732"
+          },
+          "timezone": {
+            "offset": "+4:00",
+            "description": "Abu Dhabi, Muscat, Baku, Tbilisi"
+          }
+        },
+        "email": "luis.chevalier@example.com",
+        "login": {
+          "uuid": "92981d57-ef5d-4d21-b53e-b345178448ba",
+          "username": "brownswan730",
+          "password": "females",
+          "salt": "70uZZjh7",
+          "md5": "5824017d25984c92d430ab8b435bfa5b",
+          "sha1": "6e78b38e4773d5c07e2b89ce2123beeb665385ad",
+          "sha256": "6044570a589b527faa10bcba39a16a7d2168c518fa357a7e303b1c54303f44e6"
+        },
+        "dob": {
+          "date": "1958-05-21T19:29:07.853Z",
+          "age": 64
+        },
+        "registered": {
+          "date": "2008-01-16T07:33:28.200Z",
+          "age": 15
+        },
+        "phone": "077 522 57 68",
+        "cell": "078 583 15 03",
+        "id": {
+          "name": "AVS",
+          "value": "756.9306.3607.69"
+        },
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/35.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/35.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/35.jpg"
+        },
+        "nat": "CH"
+      }
+    ],
+    "info": {
+      "seed": "86b69d38b849dcec",
+      "results": 1,
+      "page": 1,
+      "version": "1.4"
+    }
+  }
+]
