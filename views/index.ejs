@@ -190,6 +190,7 @@ Articulos de limpieza</textarea
           // console.log('roommateOptionsHTML', roommateOptionsHTML);
           $("#roommatesSelect").html(roommateOptionsHTML);
 
+          // Obtener e imprimir gastos
           await getGastos();
           $("#roommatesSelectModal").html("");
 
@@ -239,13 +240,21 @@ Articulos de limpieza</textarea
         const roommateSelected = $("#roommatesSelect").val();
         const descripcion = $("#descripcion").val();
         const monto = Number($("#monto").val());
-        await fetch("http://localhost:3000/gasto", {
-          method: "POST",
-          body: JSON.stringify({
+        const gasto = {
             roommate: roommateSelected,
             descripcion,
             monto,
-          }),
+          };
+        
+        console.log('gasto', gasto);
+
+        await fetch("http://localhost:3000/gasto", {
+          headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          method: "POST",
+          body: JSON.stringify(gasto),
         });
         imprimir();
       };
