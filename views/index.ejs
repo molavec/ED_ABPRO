@@ -158,7 +158,7 @@ Articulos de limpieza</textarea
       const getGastos = async () => {
         const res = await fetch("http://localhost:3000/gastos");
         const data = await res.json();
-        gastos = data.gastos;
+        gastos = data;
       };
 
       const imprimir = async () => {
@@ -167,31 +167,44 @@ Articulos de limpieza</textarea
           await getRoommates();
           
           // complete roommates table
-          let roommateTableHTML = ''
-          roommates.forEach((roommate)=> {
-            roommateTableHTML += `
-            <tr>
-              <td>${roommate.nombre}</td>
-              <td>${roommate.debe}</td>  
-              <td>${roommate.recibe}</td>
-              </tr>
-              ` 
-            });
-          // console.log('roommateTableHTML', roommateTableHTML);
-          $("#roommates").html(roommateTableHTML);
+          // let roommateTableHTML = ''
+          // roommates.forEach((roommate)=> {
+          //   roommateTableHTML += `
+          //   <tr>
+          //     <td>${roommate.nombre}</td>
+          //     <td>${roommate.debe}</td>  
+          //     <td>${roommate.recibe}</td>
+          //   </tr>
+          //   ` 
+          //   });
+          // // console.log('roommateTableHTML', roommateTableHTML);
+          // $("#roommates").html(roommateTableHTML);
 
           // complete roommates select
           let roommateOptionsHTML = ''
-          roommates.forEach((roommate)=> {
+          gastos.forEach((gasto)=> {
             roommateOptionsHTML += `
-              <option value="${roommate.nombre}">${roommate.nombre}</option>
-              ` 
+            <tr>
+              <td>${gasto.roommate}</td>
+              <td>${gasto.descripcion}</td>  
+              <td>${gasto.monto}</td>
+            </tr>
+            ` 
             });
           // console.log('roommateOptionsHTML', roommateOptionsHTML);
           $("#roommatesSelect").html(roommateOptionsHTML);
 
           // Obtener e imprimir gastos
           await getGastos();
+          let gastosTableHTML = ''
+          roommates.forEach((roommate)=> {
+            gastosTableHTML += `
+              <option value="${roommate.nombre}">${roommate.nombre}</option>
+              ` 
+            });
+          // console.log('gastosTableHTML', gastosTableHTML);
+          $("#gastosHistorial").html("");
+
           $("#roommatesSelectModal").html("");
 
           roommates.forEach((r) => {
@@ -201,7 +214,7 @@ Articulos de limpieza</textarea
             $("#roommatesSelectModal").append(`
           <option value="${r.nombre}">${r.nombre}</option>
           `);
-            $("#roommates").append(`
+            $("#roommates").html(`
                   <tr>
                     <td>${r.nombre}</td>
                     <td class="text-danger">${r.debe ? r.debe : "-"}</td>
@@ -209,7 +222,7 @@ Articulos de limpieza</textarea
                   </tr>
               `);
           });
-          $("#gastosHistorial").html("");
+          
           gastos.forEach((g) => {
             $("#gastosHistorial").append(`
                 <tr>
